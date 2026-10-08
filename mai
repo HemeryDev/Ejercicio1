@@ -1,0 +1,47 @@
+enum class Rol {ADMIN, EDITOR, VISITANTE}
+
+
+interface Autenticable{
+
+    fun autenticar() Boolean
+}
+
+
+interface Notificable {
+    fun notificar()
+}
+
+
+abstract class Roles (val id: int){ 
+
+abstract fun tipoRol(): String
+
+}
+
+
+class RolSistema(id: Int, val nombre: String) : Roles(id) {
+    override fun tipoRol(): String = nombre
+}
+
+
+data class Usuario(
+
+val id: Int,
+val nombre: String,
+val rol: Rol
+): Autenticable {
+
+    override fun autenticar(): Boolean {
+      println("Autenticar rol Usuario $nombre con rol:$rol")  
+    } = 
+
+}
+
+
+object GestorUsuarios{
+
+    private val usuarios = mutableListOf<Usuario>()
+
+    fun agregar(u: Usuario) = usuarios.add(u)
+    fun listar() {usuarios.forEach{it.notificar()}}
+
